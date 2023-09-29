@@ -2,7 +2,7 @@
 
 const express = require("express");
 
-// const projectModel = require('./project/model');
+const projectModel = require('./project/model');
 const projectRouter = require('./project/router');
 
 // const resourceModel = require('./resource/model');
@@ -15,8 +15,7 @@ const server = express();
 
 server.use(express.json());
 
-// server.use('/api/project', projectModel);
-// server.use('/api/project', projectRouter);
+server.use('/api/projects', projectRouter);
 
 // server.use('/api/resource', resourceModel);
 // server.use('/api/resource', resourceRouter);
