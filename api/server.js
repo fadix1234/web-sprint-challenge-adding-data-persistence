@@ -24,10 +24,10 @@ server.use('/api/projects', projectRouter);
 // server.use('/api/task', taskModel);
 // server.use('/api/task', taskRouter);
 
-server.use('*', (req,res) => {
-    res.status(404).json({
-        message: 'not found',
-    })
-})
+// server.use('*', (req,res) => {
+//     res.status(404).json({
+//         message: 'not found',
+//     })
+// })
 
 module.exports = server;
