@@ -22,20 +22,25 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    const newProject = req.body;  
-    if (newProject.project_completed === undefined) {
-      newProject.project_completed = false;
-    }
+    const newProject = req.body;
 
-    Projects.insert(req.body)
-        .then((project) => {
-            res.status(201).json(project);
+    console.log(newProject)
 
-        })
+    Projects.insert(newProject)
+        .then((newProject) => {
+            if (newProject.project_completed === 0) {
+                newProject.project_completed = false;
+            }else {
+                newProject.project_completed = true
+            }
+                res.status(201).json(newProject);
+
+            })
+    
         .catch((err) => {
             console.error(err);
             res.status(500).json({
-               
+                message: "There was an error while saving the post to the database"
             });
         });
 

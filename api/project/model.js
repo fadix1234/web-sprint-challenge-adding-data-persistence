@@ -17,5 +17,10 @@ module.exports = {
   function insert(project) {
     return db('projects')
       .insert(project)
-      .then(([id]) => get(id));
+      .then(([id]) => getProjectsById(id));
   }
+
+  function getProjectsById(id) {
+    return db('projects').where('project_id', id).first()
+    }
+  
