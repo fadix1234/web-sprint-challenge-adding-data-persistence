@@ -4,6 +4,7 @@ const db = require("../../data/dbConfig.js");
 module.exports = {
     getProjects,
     insert,
+    getProjectsById,
     // update,
     // remove,
     // getProjectActions,
@@ -23,4 +24,6 @@ module.exports = {
   function getProjectsById(id) {
     return db('projects').where('project_id', id).first()
     }
+  
+    
   

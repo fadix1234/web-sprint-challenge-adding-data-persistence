@@ -1,7 +1,36 @@
-// build your `Task` model here
-const db = require('../../data/db-config')
 
-async function getAllProjects(proje)
+const db = require("../../data/dbConfig.js");
 
 
-module.exports = {}
+module.exports = {
+    getTasks,
+    insertTask,
+    getTasksById,
+    // update,
+    // remove,
+    // getProjectActions,
+};
+
+
+
+
+
+
+
+
+function getTasks() {
+    return db("tasks")
+      .join("projects","projects.project_id", "tasks.project_id")
+  }
+  
+
+
+function insertTask(task) {
+    return db('tasks')
+        .insert(task)
+        .then(([id]) => getTasksById(id));
+}
+
+function getTasksById(id) {
+    return db('tasks').where('task_id', id).first()
+}
